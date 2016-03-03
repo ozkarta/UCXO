@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>translator</title>
+
+	</head>
+	<body>
+		<center>
+			<br/><br/><br/><br/><br/><br/><br/>
+			<input type="text"  onkeyup="callback(this)" style="width:50%"/>
+			<br/><hr>
+			<span id="or1"></span><span id=tr1></span>
+			<br/><hr>
+			<span id="or2"></span><span id=tr2></span>
+			<br/><hr>
+			<span id="or3"></span><span id=tr3></span>
+			<br/><hr>
+			<span id="or4"></span><span id=tr4></span>
+			<br/><hr>
+			<span id="or5"></span><span id=tr5></span>
+			<br/><hr>
+		</center>
+	</body>
+
+	<script >
+		function callback(input){
+			//alert(input.value);
+			if(input.value===''){
+					for(var i=1;i<=5;i++){		           	
+				           	var or='or'+i;
+				           	var tr='tr'+i;
+				           	document.getElementById(or).innerHTML ='';
+				           	document.getElementById(tr).innerHTML ='';
+				           }
+			}else{
+				   xmlhttp = new XMLHttpRequest();
+				   xmlhttp.open("GET","http://localhost:2027/search?Q="+input.value, true);
+				   xmlhttp.onreadystatechange=function(){
+				         if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				           string=xmlhttp.responseText;
+				           var myJson = JSON.parse(string);
+
+				           for(var i=1;i<=myJson.length;i++){		           	
+				           	var or='or'+i;
+				           	var tr='tr'+i;
+				           	document.getElementById(or).innerHTML =myJson[i-1].original+'  -  ';
+				           	document.getElementById(tr).innerHTML =myJson[i-1].translated+'  -  ';
+				           }
+				           for(var i=myJson.length+1;i<=5;i++){
+				           		var or='or'+i;
+					           	var tr='tr'+i;
+					           	document.getElementById(or).innerHTML ='';
+					           	document.getElementById(tr).innerHTML ='';
+				           }
+				         }
+				   }
+				   xmlhttp.send();
+			}
+		  
+		}
+	</script>
+</html>
