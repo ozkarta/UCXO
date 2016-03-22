@@ -61,5 +61,5 @@ app.use(function(err, req, res, next) {
 app.listen(2027, function(){
     console.log('Express server listening on port ' + 2027);
 });
-
+app.use(express.static(path.join(__dirname, 'public')));
 module.exports = app;

@@ -1,27 +1,102 @@
 <html>
 	<head>
-		<title>translator</title>
+		<title>უცხო სიტყვათა ლექსიკონი</title>
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+		
+		<style>
+				@font-face {
+					  font-family: "geoFont";
+					  src: url('./Fonts/aacadln.ttf') format("truetype");
+					}
+				html, body{
+				    height: 100%;
+				}
+				.container{
+				    background-image: url("");
+				    width: 100%;
+				    height: 100%;
+				    background-size: cover;
+				    background-position: center; 
+				    padding-top: 120px;
+				}
+				.center{
+				    text-align: center;
+				}
+				.color{
+				    color: #b3d1ff;
+				}
+				p{
+				    padding-top: 15px;
+				    padding-bottom: 15px;
+				}
+				button{
+				    margin-top: 20px;
+				    
+				}
+				.alert{
+					margin-top: 20px;
+					display: none;
+				}
+				.originalClass{
+					font: italic bold 17px/30px Georgia, serif;
+					font-family: "geoFont", sans-serif
+				}
+				.translatedClass{
+					font:15px/30px Georgia, serif;
+					font-family: "geoFont", sans-serif
+				}
+				#input{
+					font: italic  20px/30px Georgia, serif;
+					font-family:'geoFont',sans-serif,italic;
+
+				}
+
+		</style>
 	</head>
-	<body>
-		<center>
-			<br/><br/><br/><br/><br/><br/><br/>
-			<input type="text"  onkeyup="callback(this)" style="width:50%"/>
-			<br/><hr>
-			<span id="or1"></span><span id=tr1></span>
-			<br/><hr>
-			<span id="or2"></span><span id=tr2></span>
-			<br/><hr>
-			<span id="or3"></span><span id=tr3></span>
-			<br/><hr>
-			<span id="or4"></span><span id=tr4></span>
-			<br/><hr>
-			<span id="or5"></span><span id=tr5></span>
-			<br/><hr>
-		</center>
+	<body onload="$('#success').fadeOut();">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 center">
+
+					<div class="form-group ">
+						<input type="text" id="input" class="form-control" onkeyup="callback(this)" placeholder="ucxo sityvaTa leqsikoni" />					
+					</div>
+					
+					<div id="success" class="alert alert-success" style="display:block;">
+						<div id="con1" style="left:0px">
+							<span id="or1" class="originalClass" style="left:1%"></span><span id=tr1 class="translatedClass"></span>						
+						</div>						
+						<div id="con1" style="left:0px">
+							<span id="or2" class="originalClass" style="left:1%"></span><span id=tr2 class="translatedClass"></span>
+						</div>
+						<div id="con1" style="left:0px">
+							<span id="or3" class="originalClass" style="left:1%"></span><span id=tr3 class="translatedClass"></span>
+						</div>
+						<div id="con1" style="left:0px">
+							<span id="or4" class="originalClass" style="left:1%"></span><span id=tr4 class="translatedClass"></span>
+						</div>
+						<div id="con1" style="left:0px">
+							<span id="or5" class="originalClass" style="left:1%"></span><span id=tr5 class="translatedClass"></span>
+						</div>
+					</div>
+		
+					
+				</div>
+				
+			</div>			
+		</div>
 	</body>
 
 	<script >
+	
+
+
 		function callback(input){
 			//alert(input.value);
 			if(input.value===''){
@@ -30,6 +105,7 @@
 				           	var tr='tr'+i;
 				           	document.getElementById(or).innerHTML ='';
 				           	document.getElementById(tr).innerHTML ='';
+				           	$("#success").fadeOut();
 				           }
 			}else{
 				   xmlhttp = new XMLHttpRequest();
@@ -43,7 +119,7 @@
 				           	var or='or'+i;
 				           	var tr='tr'+i;
 				           	document.getElementById(or).innerHTML =myJson[i-1].original+'  -  ';
-				           	document.getElementById(tr).innerHTML =myJson[i-1].translated+'  -  ';
+				           	document.getElementById(tr).innerHTML =myJson[i-1].translated+'  ';
 				           }
 				           for(var i=myJson.length+1;i<=5;i++){
 				           		var or='or'+i;
@@ -51,6 +127,7 @@
 					           	document.getElementById(or).innerHTML ='';
 					           	document.getElementById(tr).innerHTML ='';
 				           }
+				          $("#success").fadeIn();
 				         }
 				   }
 				   xmlhttp.send();
