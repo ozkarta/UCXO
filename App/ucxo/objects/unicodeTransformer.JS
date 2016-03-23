@@ -35,7 +35,7 @@ var unicodeTransformer=function(){
 		this.swapArray.push(new swapObject('ხ','x'));
 		this.swapArray.push(new swapObject('ჯ','j'));
 		this.swapArray.push(new swapObject('ჰ','h'));
-		console.log('initialized');
+		//console.log('initialized');
 	}
 
 	unicodeTransformer.prototype.translateToLatin=function(GeoUnicodeString){
@@ -47,7 +47,7 @@ var unicodeTransformer=function(){
 			newString=newString+this.findLatinChar(GeoUnicodeString.charAt(i));
 		}
 		//console.log('ended translation with ');
-		console.log(newString);
+		//console.log(newString);
 		return newString;
 	}
 
@@ -60,7 +60,7 @@ var unicodeTransformer=function(){
 			newString=newString+this.findGeoChar(LatinUnicodeString.charAt(i));
 		}
 		//console.log('ended translation with ');
-		console.log(newString);
+		//console.log(newString);
 		return newString;
 	}
 

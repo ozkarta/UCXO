@@ -18,7 +18,7 @@
 				    height: 100%;
 				}
 				.container{
-				    background-image: url("");
+				    background-image: url("http://whytoread.com/wp-content/uploads/2014/05/smart-books.jpg");
 				    width: 100%;
 				    height: 100%;
 				    background-size: cover;
@@ -109,7 +109,8 @@
 				           }
 			}else{
 				   xmlhttp = new XMLHttpRequest();
-				   xmlhttp.open("GET","http://localhost:2027/search?Q="+input.value, true);
+				   console.log(window.location.host+"/search?Q="+input.value);
+				   xmlhttp.open("GET","http://"+window.location.host+"/search?Q="+input.value, true);
 				   xmlhttp.onreadystatechange=function(){
 				         if (xmlhttp.readyState==4 && xmlhttp.status==200){
 				           string=xmlhttp.responseText;

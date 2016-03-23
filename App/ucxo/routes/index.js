@@ -49,12 +49,12 @@ router.get('/search',function(req,res,next){
 
 	//console.dir(req.query.Q);
 	;
-	console.log('responsed :)))');
+	//console.log('responsed :)))');
 	
 	db.getTranslation(unicodeTransformer.translateToGeo(req.query.Q),function(recordset){
 		transformRecordSet(recordset,function(transformedRecordSet){
 			res.writeHead(200, {"Content-Type": "text/plain"});
-			console.log(JSON.stringify(transformedRecordSet));
+			//console.log(JSON.stringify(transformedRecordSet));
 			res.end(JSON.stringify(transformedRecordSet));
 		})
 	});
@@ -65,15 +65,15 @@ router.get('/search',function(req,res,next){
 var transformRecordSet=function(recordset,callback){
 	var transformedRecordSet;
 
-	console.dir(recordset);
-	console.log('length is  ....');
-	console.log(recordset.length);
+	//console.dir(recordset);
+	//console.log('length is  ....');
+	//console.log(recordset.length);
 	for(var i=0;i<recordset.length;i++){
-		console.log(i);
+		//console.log(i);
 		recordset[i].original=unicodeTransformer.translateToLatin(recordset[i].original);
 		recordset[i].translated=unicodeTransformer.translateToLatin(recordset[i].translated);
 	}
-	console.dir(recordset);
+	//console.dir(recordset);
 	callback(recordset)
 }
 
