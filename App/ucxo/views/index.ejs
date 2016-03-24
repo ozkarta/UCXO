@@ -45,17 +45,29 @@
 				}
 				.originalClass{
 					font: italic bold 17px/30px Georgia, serif;
-					font-family: "geoFont", sans-serif
+					font-family: "geoFont", sans-serif;
+					margin: 0px;
+  					display: inline;
+  					float:left;
 				}
 				.translatedClass{
 					font:15px/30px Georgia, serif;
-					font-family: "geoFont", sans-serif
+					font-family: "geoFont", sans-serif;
+					 margin: 0px; /* remove all margins to fit two divs in the container */
+  					 display: inline; 
+  					
 				}
 				#input{
 					font: italic  20px/30px Georgia, serif;
 					font-family:'geoFont',sans-serif,italic;
 
 				}
+				.innerDiv{
+					
+					padding-left: 1%;
+					float:left;
+				}
+
 
 		</style>
 	</head>
@@ -63,30 +75,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 center">
-
-					<div class="form-group ">
-						<input type="text" id="input" class="form-control" onkeyup="callback(this)" placeholder="ucxo sityvaTa leqsikoni" />					
+					<div>
+						<div class="form-group ">
+							<input type="text" id="input" class="form-control" onkeyup="callback(this)" placeholder="ucxo sityvaTa leqsikoni" />					
+						</div>
+						
+						<div id="success" class="alert alert-success" style="display:inline-block;height:85%;overflow: auto;">
+							<div id="con1" class="innerDiv">
+								<span id="or1" class="originalClass" ></span>
+								<span id=tr1 class="translatedClass" ></span>						
+							</div>						
+							<div id="con1"  class="innerDiv">
+								<span id="or2" class="originalClass" ></span>
+								<span id=tr2 class="translatedClass"></span>
+							</div>
+							<div id="con1"  class="innerDiv">
+								<span id="or3" class="originalClass" ></span>
+								<span id=tr3 class="translatedClass"></span>
+							</div>
+							<div id="con1"  class="innerDiv">
+								<span id="or4" class="originalClass" ></span>
+								<span id=tr4 class="translatedClass"></span>
+							</div>
+							<div id="con1"  class="innerDiv">
+								<span id="or5" class="originalClass" ></span>
+								<span id=tr5 class="translatedClass"></span>
+							</div>
+						</div>
 					</div>
-					
-					<div id="success" class="alert alert-success" style="display:block;">
-						<div id="con1" style="left:0px">
-							<span id="or1" class="originalClass" style="left:1%"></span><span id=tr1 class="translatedClass"></span>						
-						</div>						
-						<div id="con1" style="left:0px">
-							<span id="or2" class="originalClass" style="left:1%"></span><span id=tr2 class="translatedClass"></span>
-						</div>
-						<div id="con1" style="left:0px">
-							<span id="or3" class="originalClass" style="left:1%"></span><span id=tr3 class="translatedClass"></span>
-						</div>
-						<div id="con1" style="left:0px">
-							<span id="or4" class="originalClass" style="left:1%"></span><span id=tr4 class="translatedClass"></span>
-						</div>
-						<div id="con1" style="left:0px">
-							<span id="or5" class="originalClass" style="left:1%"></span><span id=tr5 class="translatedClass"></span>
-						</div>
-					</div>
-		
-					
+						
 				</div>
 				
 			</div>			
